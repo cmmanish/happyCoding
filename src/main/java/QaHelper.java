@@ -1,17 +1,49 @@
-import java.time.LocalTime;
+import org.apache.log4j.Logger;
+
+import java.util.HashMap;
+import java.util.TreeMap;
 
 /**
  * Created by mmadhusoodan on 8/2/15.
  */
 public class QaHelper {
-    public static String getHHMMSSFromSeconds(int nSecondTime) {
-        return LocalTime.MIN.plusSeconds(nSecondTime).toString();
+    final private static Logger log = Logger.getLogger(QaHelper.class);
+
+    public static String repeatedString(String iStr) {
+
+        HashMap<String, Integer> hashMap = new HashMap<String, Integer>();
+        String word[] = iStr.split(" ");
+        for (int i = 0; i < word.length; i++) {
+
+            if (hashMap.get(word[i]) == null) {
+                hashMap.put(word[i], 1);
+            } else {
+                int count = hashMap.get(word[i]).intValue();
+                count += 1;
+                hashMap.put(word[i], new Integer(count));
+            }
+        }
+
+        TreeMap<String, Integer> sortedMap = new TreeMap<String, Integer>();
+        sortedMap.putAll(hashMap);
+
+        log.info(sortedMap.firstKey());
+        return sortedMap.firstKey();
+    }
+
+    public static String recursiveReverseString(String s) {
+
+        String rev = "";
+        if (s != null && s.length() > 0) {
+            rev = rev + reverseString(s.substring(0, s.length()));
+        }
+        return rev;
     }
 
     public static String reverseString(String str) {
 
         String revStr = "";
-        if (str == "" || str == null || str == " ")
+        if (str.equalsIgnoreCase("") || str.equalsIgnoreCase(" "))
             return "";
         else {
             for (int i = str.length() - 1; i >= 0; i--) {
@@ -21,10 +53,10 @@ public class QaHelper {
         return revStr;
     }
 
-    public static String sentenceRevese(String str) {
+    public static String sentenceReverse(String str) {
 
         String revSentence = "";
-        if (str == null || str == "" || str == " ")
+        if (str.equalsIgnoreCase("") || str.equalsIgnoreCase(" "))
             return "";
         String word[] = str.split(" ");
         for (int i = 0; i < word.length; i++) {
@@ -34,18 +66,20 @@ public class QaHelper {
     }
 
     public static int fib(int n) {
-        //0,1,1,2,3,5,8,13,21
-        if (n == 0) return 0;
-        else if (n == 1 || n == 2) return 1;
+        if (n == 0)
+            return 0;
+        else if (n == 1 || n == 2)
+            return 1;
         else {
             return fib(n - 1) + fib(n - 2);
         }
     }
 
     public static int fact(int n) {
-        //0,1,1,2,3,5,8,13,21
-        if (n == 0) return 0;
-        else if (n == 1) return 1;
+        if (n == 0)
+            return 0;
+        else if (n == 1)
+            return 1;
         else {
             return n * fact(n - 1);
         }
