@@ -18,6 +18,16 @@ public class TestCaseA extends BaseTestClass {
     }
 
     @Test
+    public void TestReverseLowerCaseString() {
+
+        testSectionName = "TestCaseA";
+        log.info(QaHelper.reverseLowerCaseString("Level Is Palindrome"));
+        log.info(QaHelper.reverseLowerCaseString("are"));
+        log.info(QaHelper.reverseLowerCaseString(""));
+        log.info(QaHelper.reverseLowerCaseString(" "));
+        log.info(QaHelper.reverseLowerCaseString(null));
+
+    }
     public void TestRecursiveReverseString() {
         testSectionName = "TestCaseA";
 

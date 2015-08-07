@@ -9,6 +9,19 @@ import java.util.TreeMap;
 public class QaHelper {
     final private static Logger log = Logger.getLogger(QaHelper.class);
 
+    public static String reverseLowerCaseString(String str) {
+
+        if (str == null || str.equalsIgnoreCase("") || str.equalsIgnoreCase(" "))
+            return "";
+        String rev = "";
+        String words[] = str.split(" ");
+        int len = words.length;
+
+        for (int i = len - 1; i >= 0; i--)
+            rev += words[i].toLowerCase() + " ";
+        return rev.trim();
+    }
+
     public static String repeatedString(String iStr) {
 
         HashMap<String, Integer> hashMap = new HashMap<String, Integer>();
