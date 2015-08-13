@@ -6,8 +6,8 @@ import java.util.TreeMap;
 /**
  * Created by mmadhusoodan on 8/2/15.
  */
-public class QaHelper {
-    final private static Logger log = Logger.getLogger(QaHelper.class);
+public class QaStrings {
+    final private static Logger log = Logger.getLogger(QaStrings.class);
 
     public static String reverseLowerCaseString(String str) {
 
